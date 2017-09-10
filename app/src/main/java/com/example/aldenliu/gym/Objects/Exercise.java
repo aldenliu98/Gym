@@ -1,10 +1,12 @@
 package com.example.aldenliu.gym.Objects;
 
+import java.io.Serializable;
+
 /**
  * Created by AldenLiu on 9/6/2017.
  */
 
-public class Exercise {
+public class Exercise implements Serializable {
     private String name;
     private int weight;
     private int sets;

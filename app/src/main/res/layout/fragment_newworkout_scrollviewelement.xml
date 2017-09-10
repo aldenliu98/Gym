@@ -19,6 +19,7 @@
             android:layout_height="match_parent" />
 
         <EditText
+            android:id="@+id/exerciseName"
             android:inputType="text"
             android:maxLines="1"
             android:textSize="12sp"
@@ -44,6 +45,7 @@
             android:layout_height="match_parent" />
 
         <EditText
+            android:id="@+id/exerciseSets"
             android:inputType="number"
             android:textSize="12sp"
             android:maxLines="1"
@@ -60,6 +62,7 @@
             android:layout_height="match_parent" />
 
         <EditText
+            android:id="@+id/exerciseReps"
             android:inputType="number"
             android:textSize="12sp"
             android:maxLines="1"
@@ -76,6 +79,7 @@
             android:layout_height="match_parent" />
 
         <EditText
+            android:id="@+id/exerciseWeight"
             android:inputType="number"
             android:textSize="12sp"
             android:maxLines="1"
