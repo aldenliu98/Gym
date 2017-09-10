@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Gym</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="begin_new_workout">Begin a new Workout</string>
+    <string name="workout_history">Workout History</string>
+    <string name="exercise_name">Exercise Name</string>
+    <string name="sets">Sets</string>
+    <string name="reps">Reps</string>
+    <string name="weight">Weight</string>
+</resources>
