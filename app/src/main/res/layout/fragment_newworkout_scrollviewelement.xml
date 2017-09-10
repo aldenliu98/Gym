@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/newWorkoutLinearLayoutScrollViewElement"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="@string/exercise_name"
+            android:gravity="center"
+            android:textSize="12sp"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+
+        <EditText
+            android:inputType="text"
+            android:maxLines="1"
+            android:textSize="12sp"
+            android:layout_weight="2"
+            android:layout_height="match_parent"
+            android:layout_width="0dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginEnd="15dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="@string/sets"
+            android:gravity="center"
+            android:textSize="12sp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+
+        <EditText
+            android:inputType="number"
+            android:textSize="12sp"
+            android:maxLines="1"
+            android:maxLength="2"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:layout_width="0dp" />
+
+        <TextView
+            android:text="@string/reps"
+            android:gravity="center"
+            android:textSize="12sp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+
+        <EditText
+            android:inputType="number"
+            android:textSize="12sp"
+            android:maxLines="1"
+            android:maxLength="2"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:layout_width="0dp" />
+
+        <TextView
+            android:text="@string/weight"
+            android:gravity="center"
+            android:textSize="12sp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+
+        <EditText
+            android:inputType="number"
+            android:textSize="12sp"
+            android:maxLines="1"
+            android:maxLength="4"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:layout_width="0dp" />
+
+    </LinearLayout>
+
+</LinearLayout>
