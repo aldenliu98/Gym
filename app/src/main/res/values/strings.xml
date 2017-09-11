@@ -9,4 +9,6 @@
     <string name="weight">Weight</string>
     <string name="add_exercise">ADD EXERCISE</string>
     <string name="done">DONE</string>
+    <string name="let_s_workout">Let\'s Workout!</string>
+    <string name="test_exercise_name">Test Exercise Name</string>
 </resources>

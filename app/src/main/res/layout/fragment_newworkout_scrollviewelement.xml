@@ -23,6 +23,7 @@
             android:inputType="text"
             android:maxLines="1"
             android:textSize="12sp"
+            android:nextFocusDown="@+id/exerciseSets"
             android:layout_weight="2"
             android:layout_height="match_parent"
             android:layout_width="0dp" />
@@ -52,6 +53,7 @@
             android:maxLength="2"
             android:layout_weight="1"
             android:layout_height="match_parent"
+            android:nextFocusDown="@+id/exerciseReps"
             android:layout_width="0dp" />
 
         <TextView
@@ -63,6 +65,7 @@
 
         <EditText
             android:id="@+id/exerciseReps"
+            android:nextFocusDown="@+id/exerciseWeight"
             android:inputType="number"
             android:textSize="12sp"
             android:maxLines="1"
@@ -87,6 +90,12 @@
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:layout_width="0dp" />
+        
+        <Spinner
+            android:id="@+id/exerciseSpinner"
+            android:spinnerMode="dropdown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 

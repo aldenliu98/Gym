@@ -13,10 +13,10 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.aldenliu.gym.Adapters.NewWorkoutListAdapter;
-import com.example.aldenliu.gym.MainActivity;
 import com.example.aldenliu.gym.Objects.Exercise;
 import com.example.aldenliu.gym.Objects.Workout;
 import com.example.aldenliu.gym.R;
+import com.example.aldenliu.gym.WorkoutActivity;
 
 import java.util.ArrayList;
 
@@ -102,7 +102,7 @@ public class NewWorkoutFragment extends Fragment {
                     thisWorkout.addExercise(e);
                 }
 
-                Intent intent = new Intent(getActivity(), MainActivity.class);
+                Intent intent = new Intent(getActivity(), WorkoutActivity.class);
                 intent.putExtra("Workout", thisWorkout);
                 startActivity(intent);
             }
