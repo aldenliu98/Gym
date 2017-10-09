@@ -23,7 +23,7 @@ public class Exercise implements Serializable {
         String output = new String();
         output += "Exercise name: " + name + "\n" +
                 "Exercise weight: " + weight + "\n" +
-                "Exercise sets * reps: " + sets + " * " + reps;
+                "Exercise sets and reps: " + sets + " sets and " + reps + " reps";
         return output;
     }
 }

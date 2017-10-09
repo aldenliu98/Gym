@@ -21,4 +21,8 @@ public class Workout implements Serializable {
     public void addExercise(Exercise e) {
         exerciseArrayList.add(e);
     }
+
+    public ArrayList<Exercise> getExerciseArrayList() {
+        return exerciseArrayList;
+    }
 }

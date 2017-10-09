@@ -1,13 +1,12 @@
 package com.example.aldenliu.gym;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ListView;
 
-import com.example.aldenliu.gym.Fragments.NewWorkoutFragment;
 import com.example.aldenliu.gym.Objects.Workout;
 
 import java.util.ArrayList;
@@ -33,10 +32,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void StartNewWorkout(View view) {
-        // Use a fragment to prompt user to enter a new Workout, which will be updated on the ListView
-        plusButton.setEnabled(false);
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.frameLayout, new NewWorkoutFragment());
-        ft.commit();
+        // Start a new Activity for a new workout
+        Intent i = new Intent(MainActivity.this, NewWorkout.class);
+        startActivity(i);
     }
 }

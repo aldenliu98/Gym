@@ -1,12 +1,9 @@
-package com.example.aldenliu.gym.Fragments;
+package com.example.aldenliu.gym;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -15,17 +12,10 @@ import android.widget.Toast;
 import com.example.aldenliu.gym.Adapters.NewWorkoutListAdapter;
 import com.example.aldenliu.gym.Objects.Exercise;
 import com.example.aldenliu.gym.Objects.Workout;
-import com.example.aldenliu.gym.R;
-import com.example.aldenliu.gym.WorkoutActivity;
 
 import java.util.ArrayList;
 
-/**
- * Created by AldenLiu on 9/7/2017.
- */
-
-public class NewWorkoutFragment extends Fragment {
-    private LayoutInflater mLayoutInflater;
+public class NewWorkout extends AppCompatActivity {
     private ListView mListView;
     private Button addExerciseButton;
     private Button doneButton;
@@ -35,22 +25,17 @@ public class NewWorkoutFragment extends Fragment {
     private static final int INTEGER_ARRAY_INDEX = 1;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        mLayoutInflater = inflater;
-        return inflater.inflate(R.layout.fragment_newworkout, container, false);
-    }
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_new_workout);
 
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-        mListView = (ListView) getView().findViewById(R.id.newWorkoutListView);
-        addExerciseButton = (Button) getView().findViewById(R.id.addExerciseButton);
-        doneButton = (Button) getView().findViewById(R.id.doneButton);
+        mListView = (ListView) findViewById(R.id.newWorkoutListView);
+        addExerciseButton = (Button) findViewById(R.id.addExerciseButton);
+        doneButton = (Button) findViewById(R.id.doneButton);
 
         mIntegerArray = new ArrayList<>();
         mIntegerArray.add(INTEGER_ARRAY_INDEX);
-        adapter = new NewWorkoutListAdapter(getContext(), mIntegerArray);
+        adapter = new NewWorkoutListAdapter(this, mIntegerArray);
         mListView.setAdapter(adapter);
 
         addExerciseButton.setOnClickListener(new View.OnClickListener() {
@@ -72,28 +57,28 @@ public class NewWorkoutFragment extends Fragment {
 
                     EditText nameEditText = childView.findViewById(R.id.exerciseName);
                     if (checkEmpty(nameEditText)) {
-                        Toast.makeText(getContext(), "Please enter an Exercise Name", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(NewWorkout.this, "Please enter an Exercise Name", Toast.LENGTH_SHORT).show();
                         return;
                     }
                     String exerciseName = nameEditText.getText().toString();
 
                     EditText setsEditText = childView.findViewById(R.id.exerciseSets);
                     if (checkEmpty(setsEditText)) {
-                        Toast.makeText(getContext(), "Please enter number of Sets", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(NewWorkout.this, "Please enter number of Sets", Toast.LENGTH_SHORT).show();
                         return;
                     }
                     String exerciseSets = setsEditText.getText().toString();
 
                     EditText repsEditText = childView.findViewById(R.id.exerciseReps);
                     if (checkEmpty(repsEditText)) {
-                        Toast.makeText(getContext(), "Please enter number of Reps", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(NewWorkout.this, "Please enter number of Reps", Toast.LENGTH_SHORT).show();
                         return;
                     }
                     String exerciseReps = repsEditText.getText().toString();
 
                     EditText weightEditText = childView.findViewById(R.id.exerciseWeight);
                     if (checkEmpty(weightEditText)) {
-                        Toast.makeText(getContext(), "Please enter a Weight", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(NewWorkout.this, "Please enter a Weight", Toast.LENGTH_SHORT).show();
                         return;
                     }
                     String exerciseWeight = weightEditText.getText().toString();
@@ -102,7 +87,7 @@ public class NewWorkoutFragment extends Fragment {
                     thisWorkout.addExercise(e);
                 }
 
-                Intent intent = new Intent(getActivity(), WorkoutActivity.class);
+                Intent intent = new Intent(NewWorkout.this, WorkoutActivity.class);
                 intent.putExtra("Workout", thisWorkout);
                 startActivity(intent);
             }

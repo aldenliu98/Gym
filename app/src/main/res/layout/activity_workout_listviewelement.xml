@@ -1,31 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:paddingTop="10dp"
+    android:layout_height="wrap_content">
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_marginTop="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginStart="8dp"
+    <TextView
+        android:id="@+id/exerciseInfo"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:textSize="16sp" />
 
-        <TextView
-            android:text="@string/test_exercise_name"
-            android:id="@+id/workoutExerciseName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="16sp" />
+    <TextView
+        android:id="@+id/ratingTitle"
+        android:layout_toRightOf="@id/exerciseInfo"
+        android:layout_toEndOf="@id/exerciseInfo"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:text="@string/rating_bar_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    
+    <RatingBar
+        android:layout_below="@+id/exerciseInfo"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
-        <TextView
-            android:text="123 lbs"
-            android:id="@+id/workoutExerciseWeight"
-            android:textSize="16sp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-    </LinearLayout>
-</LinearLayout>
+</RelativeLayout>
