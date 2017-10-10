@@ -14,6 +14,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
+    <EditText
+        android:id="@+id/workoutName"
+        android:hint="@string/enter_workout_name_here"
+        android:maxLines="1"
+        android:inputType="text"
+        android:imeOptions="actionDone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <ListView
         android:id="@+id/newWorkoutListView"
         android:layout_width="match_parent"

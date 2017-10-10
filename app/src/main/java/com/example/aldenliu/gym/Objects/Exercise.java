@@ -11,12 +11,19 @@ public class Exercise implements Serializable {
     private int weight;
     private int sets;
     private int reps;
+    private double amountDone;
 
     public Exercise(String name, int weight, int sets, int reps) {
         this.name = name;
         this.weight = weight;
         this.sets = sets;
         this.reps = reps;
+    }
+
+    public int getSets() {return sets;}
+
+    public void setAmountDone(double a) {
+        amountDone = a;
     }
 
     public String toString() {

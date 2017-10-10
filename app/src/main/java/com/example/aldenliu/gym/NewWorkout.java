@@ -21,6 +21,7 @@ public class NewWorkout extends AppCompatActivity {
     private Button doneButton;
     private ArrayList<Integer> mIntegerArray;
     private NewWorkoutListAdapter adapter;
+    private EditText workoutName;
 
     private static final int INTEGER_ARRAY_INDEX = 1;
 
@@ -32,6 +33,7 @@ public class NewWorkout extends AppCompatActivity {
         mListView = (ListView) findViewById(R.id.newWorkoutListView);
         addExerciseButton = (Button) findViewById(R.id.addExerciseButton);
         doneButton = (Button) findViewById(R.id.doneButton);
+        workoutName = (EditText) findViewById(R.id.workoutName);
 
         mIntegerArray = new ArrayList<>();
         mIntegerArray.add(INTEGER_ARRAY_INDEX);
@@ -50,7 +52,7 @@ public class NewWorkout extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Gets data from the popup and sends it to the MainActivity in the form of a Workout.
-                Workout thisWorkout = new Workout();
+                Workout thisWorkout = new Workout(workoutName.getText().toString());
 
                 for (int i = 0; i < mIntegerArray.size(); i ++) {
                     View childView = mListView.getChildAt(i);

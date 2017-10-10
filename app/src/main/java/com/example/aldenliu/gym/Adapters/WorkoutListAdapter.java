@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.example.aldenliu.gym.Objects.Exercise;
@@ -33,6 +34,7 @@ public class WorkoutListAdapter extends ArrayAdapter<Exercise> {
         }
         Exercise thisOne = exerciseList.get(position);
         ((TextView) convertView.findViewById(R.id.exerciseInfo)).setText(thisOne.toString());
+        ((RatingBar) convertView.findViewById(R.id.ratingBar)).setNumStars(thisOne.getSets());
         return convertView;
     }
 }

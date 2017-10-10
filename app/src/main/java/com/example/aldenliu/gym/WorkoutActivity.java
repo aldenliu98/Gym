@@ -3,6 +3,8 @@ package com.example.aldenliu.gym;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.example.aldenliu.gym.Adapters.WorkoutListAdapter;
@@ -14,6 +16,7 @@ import java.util.ArrayList;
 public class WorkoutActivity extends AppCompatActivity {
     private ListView listView;
     private WorkoutListAdapter workoutListAdapter;
+    private Button finishWorkoutButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,5 +32,10 @@ public class WorkoutActivity extends AppCompatActivity {
         workoutListAdapter = new WorkoutListAdapter(this, listOfExercises);
         listView.setAdapter(workoutListAdapter);
 
+        finishWorkoutButton = (Button) findViewById(R.id.finishWorkoutButton);
+    }
+
+    public void FinishWorkout(View view) {
+        // For each Exercise in the Workout, we want to save the progress they made
     }
 }

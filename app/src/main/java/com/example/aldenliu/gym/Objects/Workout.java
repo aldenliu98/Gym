@@ -10,12 +10,19 @@ import java.util.Date;
  */
 
 public class Workout implements Serializable {
+    private String name;
     private ArrayList<Exercise> exerciseArrayList;
     private Date date;
+    private static int defaultNumber = 1;
 
-    public Workout() {
+    public Workout(String name) {
         this.date = Calendar.getInstance().getTime();
         exerciseArrayList = new ArrayList<>();
+        if (name == null) {
+            name = "Workout " + defaultNumber;
+            defaultNumber += 1;
+        }
+        this.name = name;
     }
 
     public void addExercise(Exercise e) {
