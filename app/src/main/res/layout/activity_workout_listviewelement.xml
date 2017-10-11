@@ -8,6 +8,8 @@
         android:id="@+id/exerciseInfo"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="10dp"
+        android:textStyle="bold"
+        android:layout_marginStart="10dp"
         android:layout_alignParentStart="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -20,18 +22,39 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:gravity="end"
+        android:layout_below="@+id/exerciseInfo"
         android:layout_marginRight="10dp"
+        android:layout_marginEnd="10dp"
         android:text="@string/rating_bar_message"
+        android:layout_width="wrap_content"
+        android:paddingBottom="8dp"
+        android:layout_height="wrap_content" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:spinnerMode="dialog"
+        android:layout_below="@+id/ratingTitle"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    </Spinner>
+
+    <TextView
+        android:id="@+id/spinnerText"
+        android:layout_alignBaseline="@id/spinner"
+        android:layout_below="@id/ratingTitle"
+        android:layout_toRightOf="@id/spinner"
+        android:layout_toEndOf="@id/spinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-    <!-- May want to use a SeekBar here instead..-->
-    <RatingBar
+    <SeekBar
         android:id="@+id/ratingBar"
-        android:layout_below="@+id/exerciseInfo"
-        android:layout_alignParentRight="true"
+        android:layout_below="@+id/spinner"
         android:layout_alignParentEnd="true"
-        android:layout_width="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
 </RelativeLayout>
