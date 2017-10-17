@@ -48,8 +48,9 @@
         android:layout_marginLeft="0dp">
 
         <Button
-            android:id="@+id/cancelWorkoutButton"
-            android:text="@string/cancel_workout"
+            android:id="@+id/editWorkoutButton"
+            android:text="@string/edit_workout"
+            android:onClick="finish"
             android:layout_margin="8dp"
             android:layout_width="0dp"
             android:layout_weight="1"

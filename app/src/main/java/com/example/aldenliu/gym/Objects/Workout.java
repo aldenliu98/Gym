@@ -25,11 +25,21 @@ public class Workout implements Serializable {
         this.name = name;
     }
 
+    public Workout() {}
+
     public void addExercise(Exercise e) {
         exerciseArrayList.add(e);
     }
 
     public ArrayList<Exercise> getExerciseArrayList() {
         return exerciseArrayList;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Date getDate() {
+        return date;
     }
 }

@@ -11,7 +11,7 @@ public class Exercise implements Serializable {
     private int weight;
     private int sets;
     private int reps;
-    private double amountDone;
+    private int amountDone;
 
     public Exercise(String name, int weight, int sets, int reps) {
         this.name = name;
@@ -20,9 +20,19 @@ public class Exercise implements Serializable {
         this.reps = reps;
     }
 
+    public Exercise() {}
+
     public int getSets() {return sets;}
 
-    public void setAmountDone(double a) {
+    public String getName() {return name;}
+
+    public int getWeight() {return weight;}
+
+    public int getReps() {return reps;}
+
+    public int getAmountDone() {return amountDone;}
+
+    public void setAmountDone(int a) {
         amountDone = a;
     }
 

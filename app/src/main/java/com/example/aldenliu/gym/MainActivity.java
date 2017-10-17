@@ -36,4 +36,7 @@ public class MainActivity extends AppCompatActivity {
         Intent i = new Intent(MainActivity.this, NewWorkout.class);
         startActivity(i);
     }
+
+    //TODO: Create a list of past workouts?
+    //TODO: Allow user to select an option that starts a workout similar to one they did before.
 }
