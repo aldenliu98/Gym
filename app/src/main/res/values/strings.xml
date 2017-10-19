@@ -15,4 +15,6 @@
     <string name="enter_workout_name_here">Enter Workout Name Here!</string>
     <string name="finish_your_workout">Finish Your Workout</string>
     <string name="edit_workout">Edit Workout</string>
+    <string name="continue_workout">Continue Workout</string>
+    <string name="new_workout">New Workout</string>
 </resources>

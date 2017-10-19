@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.example.aldenliu.gym.Objects.Workout;
@@ -16,6 +17,10 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<Workout> workoutArrayList;
 
     private FloatingActionButton plusButton;
+    private boolean expanded = false;
+
+    private LinearLayout fabContinueWorkout;
+    private LinearLayout fabNewWorkout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,10 +29,30 @@ public class MainActivity extends AppCompatActivity {
 
         workoutArrayList = new ArrayList<>();
 
+        fabContinueWorkout = (LinearLayout) findViewById(R.id.layoutFabEdit);
+        fabNewWorkout = (LinearLayout) findViewById(R.id.layoutFabNewWorkout);
+
         mListView = (ListView) findViewById(R.id.listView);
         plusButton = (FloatingActionButton) findViewById(R.id.floatingActionButton);
-        if (!plusButton.isEnabled()) {
-            plusButton.setEnabled(true);
+        plusButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(expanded) {
+                    closeSubMenu();
+                } else {
+                    openSubMenu();
+                }
+            }
+        });
+
+        closeSubMenu();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (expanded) {
+            closeSubMenu();
         }
     }
 
@@ -37,6 +62,19 @@ public class MainActivity extends AppCompatActivity {
         startActivity(i);
     }
 
+    private void closeSubMenu() {
+        fabNewWorkout.setVisibility(View.INVISIBLE);
+        fabContinueWorkout.setVisibility(View.INVISIBLE);
+        plusButton.setImageResource(R.drawable.ic_add_black_24dp);
+        expanded = false;
+    }
+
+    private void openSubMenu() {
+        fabNewWorkout.setVisibility(View.VISIBLE);
+        fabContinueWorkout.setVisibility(View.VISIBLE);
+        plusButton.setImageResource(R.drawable.ic_close_black_24dp);
+        expanded = true;
+    }
+
     //TODO: Create a list of past workouts?
-    //TODO: Allow user to select an option that starts a workout similar to one they did before.
 }
