@@ -12,12 +12,14 @@ public class Exercise implements Serializable {
     private int sets;
     private int reps;
     private int amountDone;
+    private int increment;
 
-    public Exercise(String name, int weight, int sets, int reps) {
+    public Exercise(String name, int weight, int sets, int reps, int increment) {
         this.name = name;
         this.weight = weight;
         this.sets = sets;
         this.reps = reps;
+        this.increment = increment;
     }
 
     public Exercise() {}
@@ -27,6 +29,8 @@ public class Exercise implements Serializable {
     public String getName() {return name;}
 
     public int getWeight() {return weight;}
+
+    public int getIncrement() {return increment;}
 
     public int getReps() {return reps;}
 

@@ -2,7 +2,8 @@
     <string name="app_name">Gym</string>
     <string name="title_activity_home">HomeActivity</string>
     <string name="begin_new_workout">Begin a new Workout</string>
-    <string name="workout_history">Workout History</string>
+    <string name="main_title">Let\'s Workout</string>
+    <string name="workout_history">Previous Workouts</string>
     <string name="exercise_name">Exercise Name</string>
     <string name="sets">Sets</string>
     <string name="reps">Reps</string>
@@ -17,4 +18,5 @@
     <string name="edit_workout">Edit Workout</string>
     <string name="continue_workout">Continue Workout</string>
     <string name="new_workout">New Workout</string>
+    <string name="increment_for_each_success">Increment for each success:</string>
 </resources>

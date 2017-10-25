@@ -85,7 +85,14 @@ public class NewWorkout extends AppCompatActivity {
                     }
                     String exerciseWeight = weightEditText.getText().toString();
 
-                    Exercise e = new Exercise(exerciseName, Integer.parseInt(exerciseWeight), Integer.parseInt(exerciseSets), Integer.parseInt(exerciseReps));
+                    EditText increment = childView.findViewById(R.id.increment);
+                    if (checkEmpty(increment)) {
+                        Toast.makeText(NewWorkout.this, "Please enter an increment", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    String incrementString = increment.getText().toString();
+
+                    Exercise e = new Exercise(exerciseName, Integer.parseInt(exerciseWeight), Integer.parseInt(exerciseSets), Integer.parseInt(exerciseReps), Integer.parseInt(incrementString));
                     thisWorkout.addExercise(e);
                 }
 

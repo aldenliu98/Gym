@@ -1,7 +1,9 @@
 package com.example.aldenliu.gym;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -45,7 +47,24 @@ public class WorkoutActivity extends AppCompatActivity {
 
     // For each Exercise in the Workout, we want to save the progress they made
     public void FinishWorkout(View view) {
-        // TODO: Create a dialog asking user if they are sure they are donezo.
+        AlertDialog a = new AlertDialog.Builder(WorkoutActivity.this).create();
+        a.setTitle("Finish Workout?");
+        a.setMessage("Are you sure you are finished with the workout?");
+        a.setButton(AlertDialog.BUTTON_NEGATIVE, "No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+            }
+        });
+        a.setButton(AlertDialog.BUTTON_POSITIVE, "Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                yesFinishWorkout();
+            }
+        });
+        a.show();
+    }
+
+    private void yesFinishWorkout() {
         for (int i = 0; i < listView.getCount(); i ++) {
             View v = listView.getChildAt(i);
             Spinner s = (Spinner) v.findViewById(R.id.spinner);

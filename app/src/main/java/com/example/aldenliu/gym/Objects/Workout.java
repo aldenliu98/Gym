@@ -25,6 +25,12 @@ public class Workout implements Serializable {
         this.name = name;
     }
 
+    public Workout(Date date, String name, ArrayList<Exercise> exerciseArrayList) {
+        this.date = date;
+        this.name = name;
+        this.exerciseArrayList = exerciseArrayList;
+    }
+
     public Workout() {}
 
     public void addExercise(Exercise e) {
