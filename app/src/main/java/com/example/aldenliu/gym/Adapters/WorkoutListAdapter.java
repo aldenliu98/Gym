@@ -26,14 +26,14 @@ public class WorkoutListAdapter extends ArrayAdapter<Exercise> {
     private LayoutInflater inflater;
 
     public WorkoutListAdapter(@NonNull Context context, ArrayList<Exercise> values) {
-        super(context, R.layout.activity_workout_listviewelement, values);
+        super(context, R.layout.layout_workout_listviewelement, values);
         this.exerciseList = values;
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
             inflater = LayoutInflater.from(getContext());
-            convertView = inflater.inflate(R.layout.activity_workout_listviewelement, parent, false);
+            convertView = inflater.inflate(R.layout.layout_workout_listviewelement, parent, false);
         }
         Exercise thisOne = exerciseList.get(position);
         ((TextView) convertView.findViewById(R.id.exerciseInfo)).setText(thisOne.toString());

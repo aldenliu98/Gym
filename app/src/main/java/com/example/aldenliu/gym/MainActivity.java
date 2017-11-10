@@ -7,11 +7,11 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.aldenliu.gym.Adapters.ContinueWorkoutListAdapter;
 import com.example.aldenliu.gym.Objects.Workout;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -20,7 +20,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private ListView mListView;
@@ -81,13 +80,13 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<QuerySnapshot> task) {
                             if (task.isSuccessful()) {
-                                List<String> testArray = new ArrayList<>();
+                                ArrayList<String> temp = new ArrayList<>();
                                 for (DocumentSnapshot document : task.getResult()) {
                                     Log.d("Hello", document.getId() + " => " + document.getData());
-                                    testArray.add(document.getData().get("name").toString() + "\n" + document.getData().get("exerciseArrayList").toString() + "\n" + document.getData().get("date").toString());
-                                    ArrayAdapter adp = new ArrayAdapter(MainActivity.this, android.R.layout.simple_list_item_1, testArray);
-                                    mListView.setAdapter(adp);
+                                        temp.add(document.getData().get("name").toString() + "\n" + document.getData().get("date").toString());
                                 }
+                                ContinueWorkoutListAdapter cwa = new ContinueWorkoutListAdapter(MainActivity.this, temp);
+                                mListView.setAdapter(cwa);
                             } else {
                                 Log.d("Hello", "Error getting documents: " + task.getException());
                             }

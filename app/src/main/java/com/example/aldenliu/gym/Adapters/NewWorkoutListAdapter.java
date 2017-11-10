@@ -21,7 +21,7 @@ public class NewWorkoutListAdapter extends ArrayAdapter<Integer> {
     private final ArrayList<Integer> values;
 
     public NewWorkoutListAdapter(Context context, ArrayList<Integer> values) {
-        super(context, R.layout.activity_newworkout_scrollviewelement, values);
+        super(context, R.layout.layout_newworkout_scrollviewelement, values);
         this.context = context;
         this.values = values;
     }
@@ -30,7 +30,7 @@ public class NewWorkoutListAdapter extends ArrayAdapter<Integer> {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         if (convertView == null) {
             LayoutInflater inflater = LayoutInflater.from(getContext());
-            convertView = inflater.inflate(R.layout.activity_newworkout_scrollviewelement, parent, false);
+            convertView = inflater.inflate(R.layout.layout_newworkout_scrollviewelement, parent, false);
         }
         return convertView;
     }
