@@ -47,7 +47,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     protected void onStart() {
         super.onStart();
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        updateUI(currentUser);
+//        updateUI(currentUser);
     }
 
     private void signIn(String email, String password) {

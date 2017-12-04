@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
                                 ArrayList<String> temp = new ArrayList<>();
                                 for (DocumentSnapshot document : task.getResult()) {
                                     Log.d("Hello", document.getId() + " => " + document.getData());
-                                        temp.add(document.getData().get("name").toString() + "\n" + document.getData().get("date").toString());
+                                    temp.add(document.getData().get("name").toString() + "\n" + document.getData().get("date").toString());
                                 }
                                 ContinueWorkoutListAdapter cwa = new ContinueWorkoutListAdapter(MainActivity.this, temp);
                                 mListView.setAdapter(cwa);
