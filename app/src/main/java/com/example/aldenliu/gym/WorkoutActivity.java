@@ -15,6 +15,8 @@ import com.example.aldenliu.gym.Adapters.WorkoutListAdapter;
 import com.example.aldenliu.gym.Objects.Exercise;
 import com.example.aldenliu.gym.Objects.Workout;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
@@ -27,6 +29,8 @@ public class WorkoutActivity extends AppCompatActivity {
     private Workout currentWorkout;
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+    private static final String TAG = "WorkoutActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,14 +80,18 @@ public class WorkoutActivity extends AppCompatActivity {
         startActivity(i);
     }
 
+    // This function will store the data to Cloud FireStore
     private void storeData() {
-        db.collection("test").document(currentWorkout.getDate().toString())
-                .set(currentWorkout)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Log.d("Testing123", "Got it Boppers");
-                    }
-                });
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String userID;
+        if (user != null) {
+            userID = user.getUid();
+            db.collection(userID).document(currentWorkout.getName()).set(currentWorkout).addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void aVoid) {
+                    Log.d(TAG, "Document written to FireStore!");
+                }
+            });
+        }
     }
 }
