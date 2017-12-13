@@ -48,4 +48,10 @@ public class Exercise implements Serializable {
                 "Exercise reps: " + reps + " reps";
         return output;
     }
+
+    public void update() {
+        if (amountDone == sets) {
+            weight += increment;
+        }
+    }
 }

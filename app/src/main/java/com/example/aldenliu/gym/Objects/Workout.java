@@ -48,4 +48,10 @@ public class Workout implements Serializable {
     public Date getDate() {
         return date;
     }
+
+    public void updateExercises() {
+        for (Exercise e : exerciseArrayList) {
+            e.update();
+        }
+    }
 }

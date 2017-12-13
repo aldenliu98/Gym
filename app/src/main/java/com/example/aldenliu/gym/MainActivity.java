@@ -7,6 +7,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -15,15 +16,21 @@ import com.example.aldenliu.gym.Adapters.ContinueWorkoutListAdapter;
 import com.example.aldenliu.gym.Objects.Workout;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
     private ListView mListView;
     private ArrayList<Workout> workoutArrayList;
+    private HashMap<String, DocumentSnapshot> temp;
 
     private FloatingActionButton plusButton;
     private boolean expanded = false;
@@ -33,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
     private TextView mainTitle;
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+    private static final String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,21 +83,37 @@ public class MainActivity extends AppCompatActivity {
     public void ContinueOldWorkout(View view) {
         mainTitle.setText(R.string.workout_history);
         if (mListView.getAdapter() == null) {
-            db.collection("test")
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            if (user == null) return;
+            String userID = user.getUid();
+            db.collection(userID)
                     .get()
                     .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                         @Override
                         public void onComplete(@NonNull Task<QuerySnapshot> task) {
                             if (task.isSuccessful()) {
-                                ArrayList<String> temp = new ArrayList<>();
+                                // Want to go through all workouts by this user and list them, and if they click
+                                // on a workout, want to use the toObject() method to render a workout page.
+                                temp = new HashMap<>();
                                 for (DocumentSnapshot document : task.getResult()) {
-                                    Log.d("Hello", document.getId() + " => " + document.getData());
-                                    temp.add(document.getData().get("name").toString() + "\n" + document.getData().get("date").toString());
+                                    Log.d(TAG, document.getId() + " => " + document.getData());
+                                    temp.put(document.getData().get("name").toString() + "\n" + document.getData().get("date").toString(), document);
                                 }
-                                ContinueWorkoutListAdapter cwa = new ContinueWorkoutListAdapter(MainActivity.this, temp);
+                                Set<String> keys = temp.keySet();
+                                ContinueWorkoutListAdapter cwa = new ContinueWorkoutListAdapter(MainActivity.this, keys.toArray(new String[keys.size()]));
                                 mListView.setAdapter(cwa);
+                                mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                    @Override
+                                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                                        String data = (String)adapterView.getItemAtPosition(i);
+                                        if (temp == null) return;
+                                        DocumentSnapshot doc = temp.get(data);
+                                        // start new Workout activity with doc
+                                        startWorkout(doc);
+                                    }
+                                });
                             } else {
-                                Log.d("Hello", "Error getting documents: " + task.getException());
+                                Log.d(TAG, "Error getting documents: " + task.getException());
                             }
                         }
                     });
@@ -99,6 +124,14 @@ public class MainActivity extends AppCompatActivity {
         // Start a new Activity for a new workout
         Intent i = new Intent(MainActivity.this, NewWorkout.class);
         startActivity(i);
+    }
+
+    private void startWorkout(DocumentSnapshot doc) {
+        Workout thisWorkout = doc.toObject(Workout.class);
+        thisWorkout.updateExercises();
+        Intent intent = new Intent(MainActivity.this, WorkoutActivity.class);
+        intent.putExtra("Workout", thisWorkout);
+        startActivity(intent);
     }
 
     private void closeSubMenu() {

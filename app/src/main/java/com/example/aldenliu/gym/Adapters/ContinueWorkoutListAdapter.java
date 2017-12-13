@@ -17,10 +17,10 @@ import java.util.ArrayList;
  */
 
 public class ContinueWorkoutListAdapter extends ArrayAdapter<String> {
-    private ArrayList<String> values;
+    private String[] values;
     private LayoutInflater inflater;
 
-    public ContinueWorkoutListAdapter(@NonNull Context context, ArrayList<String> values) {
+    public ContinueWorkoutListAdapter(@NonNull Context context, String[] values) {
         super(context, R.layout.layout_continueworkout_listviewelement, values);
         this.values = values;
     }
@@ -30,7 +30,7 @@ public class ContinueWorkoutListAdapter extends ArrayAdapter<String> {
             inflater = LayoutInflater.from(getContext());
             convertView = inflater.inflate(R.layout.layout_continueworkout_listviewelement, parent, false);
         }
-        String[] temp = values.get(position).split("\n");
+        String[] temp = values[position].split("\n");
         ((TextView) convertView.findViewById(R.id.workoutName)).setText(temp[0]);
         ((TextView) convertView.findViewById(R.id.workoutDate)).setText(temp[1]);
 
